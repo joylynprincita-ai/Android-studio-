@@ -1,13 +1,13 @@
-<<<<<<< HEAD
+# Experiment 1 installation of android studio and hello world
 # Android-studio-
-=======
+
 # Android Studio - Hello World App 📱
 
 An Android application built using **Kotlin** and **Android Studio**, demonstrating ConstraintLayout design, XML UI customization, and edge-to-edge layout integration on Android emulator (Pixel 3a API 34).
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project showcases a fundamental Android application setup with Kotlin. It demonstrates updating text dynamically in `activity_main.xml` and running build tasks on an Android Virtual Device (AVD).
 
@@ -19,7 +19,7 @@ This project showcases a fundamental Android application setup with Kotlin. It d
 
 ---
 
-## 📸 Screenshots & Demonstrations
+## Screenshots & Demonstrations
 
 | Hello World Output | Customized Text: `25MCAR099!` | Customized Text: `anything!` |
 | :---: | :---: | :---: |
@@ -27,7 +27,7 @@ This project showcases a fundamental Android application setup with Kotlin. It d
 
 ---
 
-## 🛠️ Project Structure
+##  Project Structure
 
 ```
 Hello/
@@ -51,7 +51,7 @@ Hello/
 
 ---
 
-## 🚀 Getting Started & Setup
+##  Getting Started & Setup
 
 ### Prerequisites
 - **Android Studio** (Koala / Ladybug or newer recommended)
@@ -79,6 +79,6 @@ Hello/
 
 ---
 
-## 📄 License
+## License
 This project is open-source and available under the [MIT License](LICENSE).
 >>>>>>> 0e774f8 (Initial commit: Add Hello World Android project with screenshots and README)
