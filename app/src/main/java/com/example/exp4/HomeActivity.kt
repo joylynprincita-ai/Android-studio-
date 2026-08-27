@@ -10,10 +10,12 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val welcomeText = findViewById<TextView>(R.id.welcomeText)
+        val welcomeText =
+            findViewById<TextView>(R.id.welcomeText)
 
-        val username = intent.getStringExtra("USERNAME")
+        val username =
+            intent.getStringExtra("USERNAME")
 
-        welcomeText.text = "Welcome, $username!"
+        welcomeText.text = "Welcome, $username! "
     }
 }

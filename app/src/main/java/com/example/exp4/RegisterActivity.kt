@@ -1,10 +1,10 @@
 package com.example.exp4
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -15,31 +15,37 @@ class RegisterActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.registerName)
         val username = findViewById<EditText>(R.id.registerUsername)
         val password = findViewById<EditText>(R.id.registerPassword)
-        val registerButton = findViewById<Button>(R.id.registerButton)
+
+        val registerButton =
+            findViewById<MaterialButton>(R.id.registerButton)
 
         registerButton.setOnClickListener {
 
-            val fullName = name.text.toString()
-            val user = username.text.toString()
-            val pass = password.text.toString()
+            val fullName = name.text.toString().trim()
+            val user = username.text.toString().trim()
+            val pass = password.text.toString().trim()
 
-            if (fullName.isEmpty() || user.isEmpty() || pass.isEmpty()) {
+            if (
+                fullName.isEmpty() ||
+                user.isEmpty() ||
+                pass.isEmpty()
+            ) {
 
-                Toast.makeText(
-                    this,
-                    "Please fill all fields",
-                    Toast.LENGTH_SHORT
-                ).show()
+                AlertDialog.Builder(this)
+                    .setTitle("Registration Failed")
+                    .setMessage("Please fill all fields.")
+                    .setPositiveButton("OK", null)
+                    .show()
 
             } else {
 
-                Toast.makeText(
-                    this,
-                    "Registration Successful",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                finish()
+                AlertDialog.Builder(this)
+                    .setTitle("Registration Successful")
+                    .setMessage("Account created successfully!")
+                    .setPositiveButton("OK") { _, _ ->
+                        finish()
+                    }
+                    .show()
             }
         }
     }

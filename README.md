@@ -1,58 +1,76 @@
-# Experiment 4: Android User Authentication & Navigation App
+# Experiment 5: Android User Authentication, Alert Dialogs & System Notifications
 
-An Android application built with **Kotlin** and **Android Studio** that demonstrates multi-activity user authentication flow, form validation, dynamic intent extra passing, and seamless user interface transitions.
+An Android application built with **Kotlin** and **Android Studio** demonstrating multi-activity user authentication flow, form validation, dynamic intent extra passing, interactive `AlertDialog` popups, and Android system push notifications using `NotificationChannel` and `NotificationCompat`.
 
 ---
 
 ## 📱 Features
 
-- 🔐 **User Login (`MainActivity`)**: Allows users to enter their credentials (Username and Password). Includes validation to prevent blank submission and navigates to the Home dashboard upon entry.
-- 📝 **User Registration (`RegisterActivity`)**: Enables new users to create an account by filling in Full Name, Username, and Password with validation check Toast notifications.
-- 🏠 **Personalized Home Dashboard (`HomeActivity`)**: Displays a customized welcome screen receiving user data dynamically via Android `Intent` extras.
-- 🎨 **Clean UI Design**: Styled using linear layouts, custom input fields, and material design buttons.
+- 🔐 **User Authentication (`MainActivity`)**:
+  - Validates user input (Username and Password).
+  - Displays interactive `AlertDialog` popups for **Login Successful** and **Login Failed**.
+  - Dynamically triggers system-level push notifications upon successful authentication.
+  - Passes user credentials dynamically via explicit Android `Intent` extra to the Home Dashboard.
+
+- 🔔 **Android 13+ Notification Handling**:
+  - Creates a dedicated `NotificationChannel` ("Login Notifications") for Android O+.
+  - Requests runtime permission `POST_NOTIFICATIONS` on Android 13 (Tiramisu) or higher.
+  - Builds and posts system tray notifications using `NotificationCompat.Builder` and `NotificationManagerCompat`.
+
+- 📝 **Account Registration (`RegisterActivity`)**:
+  - Handles new user registration (Full Name, Username, Password).
+  - Provides `AlertDialog` validation for incomplete fields and confirmation popups upon successful registration.
+
+- 🏠 **Personalized Home Dashboard (`HomeActivity`)**:
+  - Receives the username from `Intent.getStringExtra("USERNAME")`.
+  - Displays a customized welcome greeting (`Welcome, <username>! 👋 Welcome to the Home Page`).
 
 ---
 
 ## 📸 Screenshots
 
-| 1. Login Screen | 2. Home Dashboard (User 1) |
+| 1. Notification Permission Prompt | 2. Login Alert Dialog (User 1) |
 | :---: | :---: |
-| ![Login Screen](screenshots/01_login_screen.png) | ![Home Dashboard User 1](screenshots/02_home_screen_user1.png) |
-| *Login interface with credential inputs* | *Personalized home screen after login* |
+| ![Notification Permission](screenshots/01_notification_permission.png) | ![Login Success Alert User 1](screenshots/02_login_success_alert.png) |
+| *Runtime POST_NOTIFICATIONS permission prompt on Android 13+* | *Login Successful AlertDialog popup for user 'joy'* |
 
-| 3. Create Account / Register | 4. Home Dashboard (User 2) |
+| 3. Home Dashboard (User 1) | 4. Login Alert Dialog (User 2) |
 | :---: | :---: |
-| ![Register Screen](screenshots/03_register_screen.png) | ![Home Dashboard User 2](screenshots/04_home_screen_user2.png) |
-| *Registration screen for new users* | *Home screen updated with new registered user* |
+| ![Home Dashboard User 1](screenshots/03_home_dashboard.png) | ![Login Success Alert User 2](screenshots/04_login_success_alert_user2.png) |
+| *Personalized Home Screen displaying welcome message for 'joy'* | *Login Successful AlertDialog popup for student ID '25MCAR0099'* |
+
+| 5. Home Dashboard (User 2) |
+| :---: |
+| ![Home Dashboard User 2](screenshots/05_home_dashboard_user2.png) |
+| *Personalized Home Screen displaying welcome message for '25MCAR0099'* |
 
 ---
 
-## 🛠️ App Architecture & Navigation Flow
+## 🛠️ App Architecture & Flow
 
 ```mermaid
 graph TD
     A[MainActivity / Login Screen] -->|Click REGISTER| B[RegisterActivity]
-    A -->|Enter Credentials & Click LOGIN| C[HomeActivity]
-    B -->|Fill Details & Click REGISTER| A
+    A -->|Enter Credentials & Click LOGIN| C{Validate Credentials}
+    C -->|Empty Fields| D[Show Failure AlertDialog]
+    C -->|Valid Input| E[Request POST_NOTIFICATIONS Permission]
+    E --> F[Show Login Success AlertDialog]
+    F -->|Click OK| G[Trigger Push Notification & Navigate via Intent]
+    G --> H[HomeActivity Dashboard]
+    B -->|Fill Form & Click REGISTER| I[Show Registration Success AlertDialog]
+    I -->|Click OK| A
 ```
 
-### Activity Components:
+### Key Components:
 
 1. **`MainActivity.kt`**:
-   - Primary launcher activity.
-   - Binds `EditText` fields for `username` and `password`.
-   - Validates user input with `Toast` error feedback if fields are empty.
-   - Launches `HomeActivity` with `intent.putExtra("USERNAME", user)`.
-   - Redirects to `RegisterActivity` when "Don't have an account? Register" is clicked.
-
-2. **`RegisterActivity.kt`**:
-   - Registration screen for new accounts.
-   - Binds `registerName`, `registerUsername`, and `registerPassword`.
-   - Validates all input fields before displaying a successful registration toast and finishing the activity to return to login.
-
-3. **`HomeActivity.kt`**:
-   - Reads user parameters from `intent.getStringExtra("USERNAME")`.
-   - Updates the UI `welcomeText` dynamically (`Welcome, <username>!`).
+   - Manages login interface, `NotificationChannel` initialization (`login_channel`), runtime notification permission requests, `AlertDialog` prompt displays, push notification dispatching, and explicit `Intent` navigation to `HomeActivity`.
+2. **`HomeActivity.kt`**:
+   - Extracts `USERNAME` extra from `Intent` and renders a personalized welcome greeting.
+3. **`RegisterActivity.kt`**:
+   - Collects user registration fields, displays validation/confirmation dialogs, and returns to the login screen upon completion.
+4. **`AndroidManifest.xml`**:
+   - Declares `android.permission.POST_NOTIFICATIONS` for system notifications.
 
 ---
 
@@ -64,7 +82,7 @@ exp4/
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/example/exp4/
-│   │   │   │   ├── MainActivity.kt        # Login Activity Logic
+│   │   │   │   ├── MainActivity.kt        # Login Activity with AlertDialog & Notification Logic
 │   │   │   │   ├── RegisterActivity.kt    # Registration Activity Logic
 │   │   │   │   └── HomeActivity.kt        # Home Dashboard Logic
 │   │   │   ├── res/
@@ -73,13 +91,14 @@ exp4/
 │   │   │   │   │   ├── activity_register.xml # Register Screen Layout
 │   │   │   │   │   └── activity_home.xml     # Home Screen Layout
 │   │   │   │   └── values/
-│   │   │   └── AndroidManifest.xml
+│   │   │   └── AndroidManifest.xml       # Manifest with POST_NOTIFICATIONS permission
 │   └── build.gradle.kts
 ├── screenshots/
-│   ├── 01_login_screen.png
-│   ├── 02_home_screen_user1.png
-│   ├── 03_register_screen.png
-│   └── 04_home_screen_user2.png
+│   ├── 01_notification_permission.png
+│   ├── 02_login_success_alert.png
+│   ├── 03_home_dashboard.png
+│   ├── 04_login_success_alert_user2.png
+│   └── 05_home_dashboard_user2.png
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
@@ -92,21 +111,22 @@ exp4/
 - **Language**: Kotlin
 - **Min SDK**: API Level 24 (Android 7.0)
 - **Target SDK**: API Level 36 / 37
-- **UI Components**: `AppCompatActivity`, `LinearLayout`, `EditText`, `Button`, `TextView`, `Toast`
+- **Key APIs**: `AlertDialog`, `NotificationChannel`, `NotificationCompat`, `NotificationManagerCompat`, `Intent`
+- **Permissions**: `android.permission.POST_NOTIFICATIONS`
 - **IDE**: Android Studio
 
 ---
 
 ## 🚀 How to Run the Project
 
-1. Clone or download the repository:
+1. Clone the repository and switch to `exp5` branch:
    ```bash
-   git clone https://github.com/joylynprincita-ai/Android-studio-.git -b exp4
+   git clone https://github.com/joylynprincita-ai/Android-studio-.git -b exp5
    ```
 2. Open **Android Studio**.
-3. Select **Open an Existing Project** and navigate to the `exp4` directory.
+3. Select **Open an Existing Project** and navigate to the project directory.
 4. Allow Gradle to sync dependencies automatically.
-5. Select an Emulator (e.g., Pixel 3a API 34) or connect a physical Android device.
+5. Launch an Emulator (e.g., Pixel 3a API 34+) or connect a physical Android device.
 6. Click **Run** (`Shift + F10`) to build and launch the application.
 
 ---
