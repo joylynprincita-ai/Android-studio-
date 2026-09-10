@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- HOME SCREEN -->
+    <ScrollView
+        android:id="@+id/homeScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- College Logo -->
+            <ImageView
+                android:id="@+id/collegeLogo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitCenter"
+                android:contentDescription="College Logo"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CollegeHelp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Support Portal"
+                android:textSize="18sp"
+                android:layout_marginBottom="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Support Category"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btnAcademic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Academic Support"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnTechnical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Technical Support"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnLibrary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Library Support" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- FRAGMENT CONTAINER -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:visibility="gone" />
+
+</FrameLayout>
