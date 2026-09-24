@@ -38,22 +38,32 @@ An Android application developed using **Kotlin** and **Android Studio**, demons
 ### 1. Student Registration & Confirmation
 | Registration Form | Registration Success Alert |
 | :---: | :---: |
-| Student Registration interface with input fields for Name, USN, Email, and Password. | Success dialog displaying student welcome message and USN upon registration completion. |
+| <img src="screenshots/registration.png" width="350" alt="Student Registration"/> | <img src="screenshots/registration_success.png" width="350" alt="Registration Success Alert"/> |
+| *Student Registration interface with input fields* | *Dialog displaying welcome message & USN* |
+
+<br/>
 
 ### 2. Student Login & Authentication
 | Login Interface & Success Dialog |
 | :---: |
-| Login screen validating student credentials and displaying confirmation dialog upon successful login. |
+| <img src="screenshots/login_success.png" width="350" alt="Login Success"/> |
+| *Login screen validating credentials with success dialog* |
+
+<br/>
 
 ### 3. Student Dashboard & Navigation
 | Home Dashboard |
 | :---: |
-| Interactive Dashboard presenting student options menu and quick navigation buttons. |
+| <img src="screenshots/dashboard.png" width="350" alt="Student Dashboard"/> |
+| *Interactive Dashboard with options menu and navigation* |
+
+<br/>
 
 ### 4. Student Profile View
 | Student Profile Screen |
 | :---: |
-| Profile layout showing student Name, USN (25MCAR0099), Course (MCA), and Email (Joy@gmail.com). |
+| <img src="screenshots/profile.png" width="350" alt="Student Profile"/> |
+| *Profile layout showing Name, USN (25MCAR0099), Course (MCA), & Email* |
 
 ---
 
