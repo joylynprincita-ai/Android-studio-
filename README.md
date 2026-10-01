@@ -1,45 +1,62 @@
-# Experiment 8 - Android Menus & WebView Application
+# Experiment 8 - Student Web Portal: Android Menus & WebView App
 
 **Owner & Author:** joylynprincita
 
-This repository contains the complete Android project for **Experiment 8**, which demonstrates the implementation of **3 distinct types of Android Menus** (Options Menu, Context Menu, and Popup Menu) along with an interactive **WebView** component.
+An Android application built with **Kotlin** and **Android Studio** demonstrating **3 distinct types of Android Menus** (Options Menu, Context Menu, and Popup Menu) alongside an embedded **WebView** component integrated within a Student Web Portal interface.
 
 ---
 
-## 📌 Features Overview
+## 📸 Application Screenshots
 
-### 1. Options Menu (Toolbar Menu)
-- **Inflation**: Defined in `res/menu/menu_options.xml` and attached to the Action Bar / Toolbar in `MainActivity.kt`.
+| 1. Main Interface & Student Details | 2. Popup Menu View |
+| :---: | :---: |
+| ![Main Interface](screenshots/01_main_interface.png) | ![Popup Menu](screenshots/02_popup_menu.png) |
+| *Student Web Portal showing Name: JOYLYN, USN: 25MCAR0099 & UI controls* | *Popup Menu anchored to button showing View Profile, Settings & Help* |
+
+| 3. Web Page View | 4. Context Menu View |
+| :---: | :---: |
+| ![Web Page View](screenshots/03_web_page_view.png) | ![Context Menu](screenshots/04_context_menu.png) |
+| *Embedded WebView displaying web page content inside app* | *Context Menu displaying Select Action (Edit, Copy, Delete) on long-press* |
+
+---
+
+## 📱 Features & Components
+
+### 🎓 Student Profile Header
+- **Name**: `JOYLYN`
+- **USN**: `25MCAR0099`
+- **Title**: Student Web Portal - Android Menus and WebView Demonstration
+
+### 1. ⚙️ Options Menu (Toolbar Menu)
+- **Inflation**: Defined in `res/menu/menu_options.xml` and attached to the Action Bar / Toolbar (`R.id.toolbar`) in `MainActivity.kt`.
 - **Menu Items**:
-  - 🏠 **Home**: Displays a Toast message indicating selection.
-  - 🌐 **Web**: Triggers the embedded WebView to display web content (`https://example.com/`).
-  - ℹ️ **About**: Shows project and experiment information.
+  - 🏠 **Home**: Toast notification confirming selection.
+  - 🌐 **Web**: Renders the embedded WebView and loads web content.
+  - ℹ️ **About**: Displays project information via Toast.
 
-### 2. Context Menu (Long-Press Menu)
-- **Inflation**: Defined in `res/menu/menu_context.xml` and registered on the target TextView (`txtContext`).
-- **Trigger**: Activated by performing a **long-press** on the interactive TextView.
-- **Menu Items**:
-  - ✏️ **Edit**: Contextual edit action with feedback.
-  - 📋 **Copy**: Contextual copy action.
-  - 🗑️ **Delete**: Contextual delete action.
-
-### 3. Popup Menu (Button Anchored Menu)
+### 2. 📋 Popup Menu (Button Anchored)
 - **Inflation**: Defined in `res/menu/menu_popup.xml`.
-- **Trigger**: Dynamically anchored to the "Show Popup Menu" button (`btnPopup`) upon a click event.
+- **Trigger**: Click event on the **`OPEN POPUP MENU`** button (`btnPopup`).
 - **Menu Items**:
-  - 👤 **Profile**: Displays profile selection feedback.
-  - ⚙️ **Settings**: Opens settings placeholder action.
-  - ❓ **Help**: Displays help option response.
+  - 👤 **View Profile**: Profile selection feedback.
+  - ⚙️ **Settings**: App settings action.
+  - ❓ **Help**: Displays help dialog action.
 
----
+### 3. 📝 Context Menu (Long-Press Action)
+- **Inflation**: Defined in `res/menu/menu_context.xml`.
+- **Trigger**: Long-press on the text view **`LONG PRESS THIS TEXT FOR CONTEXT MENU`** (`txtContext`).
+- **Header**: "Select Action"
+- **Menu Items**:
+  - ✏️ **Edit**: Edit item feedback Toast.
+  - 📋 **Copy**: Copy item feedback Toast.
+  - 🗑️ **Delete**: Delete item feedback Toast.
 
-## 🌐 WebView Integration
-
-- **Trigger**: Clicking the "Open Web View" button (`btnWebView`) or selecting **Web** from the Options Menu.
+### 4. 🌐 WebView Integration
+- **Trigger**: Click event on **`OPEN WEB PAGE`** button (`btnWebView`) or selecting **Web** in the Options Menu.
 - **Configuration**:
   - JavaScript Enabled (`javaScriptEnabled = true`)
   - DOM Storage Enabled (`domStorageEnabled = true`)
-  - `WebViewClient` configured to keep browsing inline within the app.
+  - Inline browsing configured via custom `WebViewClient`.
 
 ---
 
@@ -56,23 +73,29 @@ menu_exp8/
 │   │           ├── layout/
 │   │           │   └── activity_main.xml
 │   │           └── menu/
-│   │               ├── menu_options.xml
 │   │               ├── menu_context.xml
+│   │               ├── menu_options.xml
 │   │               └── menu_popup.xml
-│   └── build.gradle
-├── build.gradle
-├── settings.gradle
+│   └── build.gradle.kts
+├── screenshots/
+│   ├── 01_main_interface.png
+│   ├── 02_popup_menu.png
+│   ├── 03_web_page_view.png
+│   └── 04_context_menu.png
+├── build.gradle.kts
+├── settings.gradle.kts
 └── README.md
 ```
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run the App
 
-1. Open the project folder in **Android Studio**.
-2. Sync Project with Gradle Files.
-3. Connect an Android Emulator or a physical device with USB Debugging enabled.
-4. Click **Run 'app'** (`Shift + F10`).
+1. Open **Android Studio**.
+2. Select **Open** and select the `menu_exp8` project directory.
+3. Wait for Gradle sync to complete automatically.
+4. Select an active Emulator (e.g. Pixel 3a API 34) or connect a physical Android device.
+5. Click **Run 'app'** (`Shift + F10`).
 
 ---
 
