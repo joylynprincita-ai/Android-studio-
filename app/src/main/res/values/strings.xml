@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">exp10</string>
+    <string name="contacts_title">Contacts Content Provider</string>
+    <string name="contacts_subtitle">Data Sharing via ContactsContract</string>
+    <string name="btn_fetch_contacts">Fetch / Refresh Contacts</string>
+    <string name="status_default">Tap \'Fetch / Refresh Contacts\' to load contacts.</string>
+    <string name="permission_denied">Permission to read contacts was denied.</string>
+    <string name="no_contacts_found">No contacts found on device.</string>
+    <string name="contacts_loaded_count">Loaded %1$d contact(s) via ContentProvider.</string>
+</resources>
