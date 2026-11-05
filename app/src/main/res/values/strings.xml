@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">exp12</string>
+    <string name="title_web_service">Web Service HTTP Request</string>
+    <string name="hint_url">Web Service URL</string>
+    <string name="default_url">https://jsonplaceholder.typicode.com/posts/1</string>
+    <string name="btn_send_request">Send HTTP GET Request</string>
+    <string name="initial_result">Press \'Send HTTP GET Request\' to access web service.</string>
+    <string name="msg_enter_url">Please enter a valid URL.</string>
+    <string name="msg_connecting">Connecting to web service…\nURL: %1$s</string>
+</resources>
