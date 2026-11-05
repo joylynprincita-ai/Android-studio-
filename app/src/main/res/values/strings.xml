@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DayPlanner</string>
+    <string name="title_places">Sightseeing To-Do List</string>
+    <string name="title_map">Map &amp; Route</string>
+    <string name="add_place">Add Place</string>
+    <string name="plan_my_day">Plan My Day</string>
+    <string name="clear_route">Clear Route</string>
+    <string name="food_stop">Food Stop 🍔</string>
+    <string name="rest_stop">Rest Stop ☕</string>
+</resources>
