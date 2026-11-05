@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Google Maps - Exp 11</string>
+    <string name="exp_title">Experiment 11: Display Google Maps</string>
+    <string name="student_name_label">Name:</string>
+    <string name="student_usn_label">USN:</string>
+    <string name="default_student_name">Joylyn Fernandes</string>
+    <string name="default_student_usn">25MCAR0099</string>
+    <string name="map_type_normal">Normal</string>
+    <string name="map_type_satellite">Satellite</string>
+    <string name="map_type_terrain">Terrain</string>
+    <string name="map_type_hybrid">Hybrid</string>
+    <string name="search_hint">Enter city or place (e.g. Bengaluru)</string>
+    <string name="btn_search">Search</string>
+    <string name="btn_add_marker">Add Marker</string>
+</resources>
